@@ -35,26 +35,6 @@ percona_sys_source_dir="$( \
 	| head -n 1 \
 )"
 
-<<COMMENTED
-# Original sources
-echo  -e "\n
-Getting original sources
-------------------------
-"
-
-percona_orig_ver="$(echo ${percona_sys_source_dir} | sed -re "s!percona-server-${percona_ver}-!!" -e "s!\.[a-z0-9]+\.tar\.gz\$!!")"
-percona_orig_source_pkg="Percona-Server-${percona_orig_ver}.tar.gz"
-percona_orig_source_dir="$(basename ${percona_orig_source_pkg} .tar.gz)"
-
-wget -c "http://www.percona.com/redir/downloads/Percona-Server-${percona_ver}/Percona-Server-${percona_orig_ver}/source/${percona_orig_source_pkg}"
-
-if [ ! -d "${percona_orig_source_dir}" ]; then
-    echo -e "\n\nUnpacking original sources\n"
-    tar -zxf  "${percona_orig_source_pkg}"
-    echo -e "Unpacked sucessfully\n"
-fi
-COMMENTED
-
 sphinxse_dir="${percona_sys_source_dir}/storage/sphinx"
 
 [ -d "${sphinxse_dir}" ] && rm -rf ${sphinxse_dir}
